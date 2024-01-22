@@ -34,6 +34,7 @@
 	overflow: hidden;
 	border: 1px solid #333;
 	background-color: #111;
+	color: #fff;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -74,7 +75,7 @@
 }
 
 .file-solution.file-modified {
-	color: blue;
+	color: skyblue;
 }
 
 .file-added {
