@@ -1,0 +1,14 @@
+{
+  "commitHash": "41ea687533c98ac27d69e3f9c8189d327630a00f",
+  "commitMessage": "template: introduce the runtime to main",
+  "files": [
+    {
+      "status": "M",
+      "file": "README.md"
+    },
+    {
+      "status": "M",
+      "file": "src/main.rs"
+    }
+  ]
+}
