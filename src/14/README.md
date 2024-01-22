@@ -88,17 +88,17 @@
 
 
 <div class="tab">
-	<button class="subtab tablinks active" onclick="switchSubTab(event, 'template.diff')">template.diff</button>
-	<button class="subtab tablinks" onclick="switchSubTab(event, 'solution.diff')">solution.diff</button>
+	<button class="difftab tablinks active" onclick="switchDiff(event, 'template.diff')" data-id="template.diff">template.diff</button>
+	<button class="difftab tablinks" onclick="switchDiff(event, 'solution.diff')" data-id="solution.diff">solution.diff</button>
 </div>
-<div id="template.diff" class="subtab tabcontent active" data-id="template.diff">
+<div id="template.diff" class="difftab tabcontent active" data-id="template.diff">
 
 ```diff
 {{#include ./template/template.diff}}
 ```
 
 </div>
-<div id="solution.diff" class="subtab tabcontent" data-id="solution.diff">
+<div id="solution.diff" class="difftab tabcontent" data-id="solution.diff">
 
 ```diff
 {{#include ./solution/solution.diff}}

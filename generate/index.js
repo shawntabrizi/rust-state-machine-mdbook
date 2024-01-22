@@ -319,15 +319,15 @@ function generateDiffMarkdown(type) {
 
 let solutionDiffMarkdown = `
 <div class="tab">
-	<button class="difftab tablinks active" onclick="switchDiff(event, 'template.diff')">template.diff</button>
-	<button class="difftab tablinks" onclick="switchDiff(event, 'solution.diff')">solution.diff</button>
+	<button class="difftab tablinks active" onclick="switchDiff(event, 'template.diff')" data-id="template.diff">template.diff</button>
+	<button class="difftab tablinks" onclick="switchDiff(event, 'solution.diff')" data-id="solution.diff">solution.diff</button>
 </div>
-<div id="template.diff" class="subtab tabcontent active" data-id="template.diff">
+<div id="template.diff" class="difftab tabcontent active" data-id="template.diff">
 
 \`\`\`diff\n{{#include ./template/template.diff}}\n\`\`\`
 
 </div>
-<div id="solution.diff" class="subtab tabcontent" data-id="solution.diff">
+<div id="solution.diff" class="difftab tabcontent" data-id="solution.diff">
 
 \`\`\`diff\n{{#include ./solution/solution.diff}}\n\`\`\`
 
@@ -335,9 +335,9 @@ let solutionDiffMarkdown = `
 
 let changesDiffMarkdown = `
 <div class="tab">
-	<button class="difftab tablinks active" onclick="switchDiff(event, 'changes.diff')">changes.diff</button>
+	<button class="difftab tablinks active" onclick="switchDiff(event, 'changes.diff')" data-id="changes.diff">changes.diff</button>
 </div>
-<div id="changes.diff" class="subtab tabcontent active" data-id="changes.diff">
+<div id="changes.diff" class="difftab tabcontent active" data-id="changes.diff">
 
 \`\`\`diff\n{{#include ./source/changes.diff}}\n\`\`\`
 

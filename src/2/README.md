@@ -42,9 +42,9 @@
 
 
 <div class="tab">
-	<button class="subtab tablinks active" onclick="switchSubTab(event, 'changes.diff')">changes.diff</button>
+	<button class="difftab tablinks active" onclick="switchDiff(event, 'changes.diff')" data-id="changes.diff">changes.diff</button>
 </div>
-<div id="changes.diff" class="subtab tabcontent active" data-id="changes.diff">
+<div id="changes.diff" class="difftab tabcontent active" data-id="changes.diff">
 
 ```diff
 {{#include ./source/changes.diff}}
