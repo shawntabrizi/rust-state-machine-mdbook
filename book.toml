@@ -4,3 +4,7 @@ language = "en"
 multilingual = false
 src = "src"
 title = "Rust State Machine"
+
+[output.html]
+additional-css = ["custom/styles.css"]
+additional-js = ["custom/tabs.js"]

@@ -241,6 +241,8 @@ function generateFileMarkdown(type, files) {
 	}
 
 	let output = "";
+
+	let parsedFiles = [];
 	for (file of files) {
 		if (!file.file) {
 			continue;
@@ -279,11 +281,24 @@ function generateFileMarkdown(type, files) {
 			codeStyle = "toml";
 		}
 
-		output += `#### **<span class="${classStyle}">${file.file}</span>**\n\n`;
-		output += `\`\`\`${codeStyle}\n{{#include ${filepath}}}\n\`\`\`\n\n`;
+		parsedFiles.push({ filename: file.file, classStyle, codeStyle, filepath})
 	}
 
-	if (output == "") {
+	if (parsedFiles.length > 0) {
+		output += `<div class="tab">\n`;
+
+		for ([i, file] of parsedFiles.entries()) {
+			output += `<button class="subtab tablinks ${file.classStyle}${i == 0 ? " active" : ""}" onclick="switchSubTab(event, '${file.filename}')" data-id="${file.filename}">${file.filename}</button>\n`;
+		}
+
+		output += `</div>\n`
+
+		for ([i, file] of parsedFiles.entries()) {
+			output += `<div id="${type}/${file.filename}" class="subtab tabcontent${i == 0 ? " active" : ""}" data-id="${file.filename}">\n\n`;
+			output += `\`\`\`${file.codeStyle}\n{{#include ${file.filepath}}}\n\`\`\`\n\n`;
+			output += `</div>\n\n`;
+		}
+	} else {
 		output = "No files edited in this step.";
 	}
 
@@ -294,84 +309,115 @@ function generateDiffMarkdown(type) {
 	let output = "";
 
 	if (type == "template" || type == "solution") {
-		let filepath = `./template/template.diff`;
-		output += `#### **template.diff**\n\n`;
-		output += `\`\`\`diff\n{{#include ${filepath}}}\n\`\`\`\n\n`;
-
-		filepath = `./solution/solution.diff`;
-		output += `#### **solution.diff**\n\n`;
-		output += `\`\`\`diff\n{{#include ${filepath}}}\n\`\`\`\n\n`;
+		output += solutionDiffMarkdown;
 	} else {
-		let filepath = `./${type}/changes.diff`;
-		output += `#### **changes.diff**\n\n`;
-		output += `\`\`\`diff\n{{#include ${filepath}}}\n\`\`\`\n\n`;
+		output += changesDiffMarkdown;
 	}
 
 	return output;
 }
 
+let solutionDiffMarkdown = `
+<div class="tab">
+	<button class="difftab tablinks active" onclick="switchDiff(event, 'template.diff')">template.diff</button>
+	<button class="difftab tablinks" onclick="switchDiff(event, 'solution.diff')">solution.diff</button>
+</div>
+<div id="template.diff" class="subtab tabcontent active" data-id="template.diff">
+
+\`\`\`diff\n{{#include ./template/template.diff}}\n\`\`\`
+
+</div>
+<div id="solution.diff" class="subtab tabcontent" data-id="solution.diff">
+
+\`\`\`diff\n{{#include ./solution/solution.diff}}\n\`\`\`
+
+</div>`;
+
+let changesDiffMarkdown = `
+<div class="tab">
+	<button class="difftab tablinks active" onclick="switchDiff(event, 'changes.diff')">changes.diff</button>
+</div>
+<div id="changes.diff" class="subtab tabcontent active" data-id="changes.diff">
+
+\`\`\`diff\n{{#include ./source/changes.diff}}\n\`\`\`
+
+</div>`;
+
 let templateMarkdown = `
+<div class="content-row">
+<div class="content-col">
+
 {{#include ./template/README.md}}
 
-<!-- slide:break -->
+</div>
 
-<!-- tabs:start -->
+<div class="content-col">
 
-#### **template**
+<div class="tab">
+  <button class="maintab tablinks active" onclick="switchMainTab(event, 'Template')">Template</button>
+  <button class="maintab tablinks" onclick="switchMainTab(event, 'Solution')">Solution</button>
+  <button class="maintab tablinks" onclick="switchMainTab(event, 'Diff')">Diff</button>
+</div>
 
-<!-- tabs:start -->
+<div id="Template" class="maintab tabcontent active">
 
 <!-- insert_template_files -->
 
-<!-- tabs:end -->
+</div>
 
-#### **solution**
-
-<!-- tabs:start -->
+<div id="Solution" class="maintab tabcontent">
 
 <!-- insert_solution_files -->
 
-<!-- tabs:end -->
+</div>
 
-#### **diff**
-
-<!-- tabs:start -->
+<div id="Diff" class="maintab tabcontent">
 
 <!-- insert_diff_files -->
 
-<!-- tabs:end -->
+</div>
 
-<!-- tabs:end -->
+</div>
+</div>
 `;
 
 let sourceMarkdown = `
+<div class="content-row">
+<div class="content-col">
+
 {{#include ./source/README.md}}
 
-<!-- slide:break -->
+</div>
+<div class="content-col">
 
-<!-- tabs:start -->
+<div class="tab">
+  <button class="maintab tablinks active" onclick="switchMainTab(event, 'Source')">Source</button>
+  <button class="maintab tablinks" onclick="switchMainTab(event, 'Diff')">Diff</button>
+</div>
 
-#### **source**
-
-<!-- tabs:start -->
+<div id="Source" class="maintab tabcontent active">
 
 <!-- insert_source_files -->
 
-<!-- tabs:end -->
+</div>
 
-#### **diff**
-
-<!-- tabs:start -->
+<div id="Diff" class="maintab tabcontent">
 
 <!-- insert_diff_files -->
 
-<!-- tabs:end -->
+</div>
 
-<!-- tabs:end -->
+</div>
+</div>
 `;
 
 let sectionMarkdown = `
-{{#include ./source/README.md}}`;
+<div class="content-section">
+
+{{#include ./source/README.md}}
+
+</div>
+`;
 
 function getStepName(folder) {
 	const filePath = path.join(folder, "README.md");

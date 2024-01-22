@@ -1,110 +1,157 @@
 
+<div class="content-row">
+<div class="content-col">
+
 {{#include ./template/README.md}}
 
-<!-- slide:break -->
+</div>
 
-<!-- tabs:start -->
+<div class="content-col">
 
-#### **template**
+<div class="tab">
+  <button class="maintab tablinks active" onclick="switchMainTab(event, 'Template')">Template</button>
+  <button class="maintab tablinks" onclick="switchMainTab(event, 'Solution')">Solution</button>
+  <button class="maintab tablinks" onclick="switchMainTab(event, 'Diff')">Diff</button>
+</div>
 
-<!-- tabs:start -->
+<div id="Template" class="maintab tabcontent active">
 
-#### **<span class="file-template file-modified">Cargo.toml</span>**
+<div class="tab">
+<button class="subtab tablinks file-template file-modified active" onclick="switchSubTab(event, 'Cargo.toml')" data-id="Cargo.toml">Cargo.toml</button>
+<button class="subtab tablinks file-template file-added" onclick="switchSubTab(event, 'macros/src/lib.rs')" data-id="macros/src/lib.rs">macros/src/lib.rs</button>
+</div>
+<div id="template/Cargo.toml" class="subtab tabcontent active" data-id="Cargo.toml">
 
 ```toml
 {{#include ./template/Cargo.toml}}
 ```
 
-#### **<span class="file-template file-added">macros/src/lib.rs</span>**
+</div>
+
+<div id="template/macros/src/lib.rs" class="subtab tabcontent" data-id="macros/src/lib.rs">
 
 ```rust
 {{#include ./template/macros/src/lib.rs}}
 ```
 
+</div>
 
 
-<!-- tabs:end -->
 
-#### **solution**
+</div>
 
-<!-- tabs:start -->
+<div id="Solution" class="maintab tabcontent">
 
-#### **<span class="file-solution file-modified">Cargo.toml</span>**
+<div class="tab">
+<button class="subtab tablinks file-solution file-modified active" onclick="switchSubTab(event, 'Cargo.toml')" data-id="Cargo.toml">Cargo.toml</button>
+<button class="subtab tablinks file-solution file-added" onclick="switchSubTab(event, 'macros/Cargo.toml')" data-id="macros/Cargo.toml">macros/Cargo.toml</button>
+<button class="subtab tablinks file-solution file-added" onclick="switchSubTab(event, 'macros/src/call/expand.rs')" data-id="macros/src/call/expand.rs">macros/src/call/expand.rs</button>
+<button class="subtab tablinks file-solution file-added" onclick="switchSubTab(event, 'macros/src/call/mod.rs')" data-id="macros/src/call/mod.rs">macros/src/call/mod.rs</button>
+<button class="subtab tablinks file-solution file-added" onclick="switchSubTab(event, 'macros/src/call/parse.rs')" data-id="macros/src/call/parse.rs">macros/src/call/parse.rs</button>
+<button class="subtab tablinks file-solution file-modified" onclick="switchSubTab(event, 'macros/src/lib.rs')" data-id="macros/src/lib.rs">macros/src/lib.rs</button>
+<button class="subtab tablinks file-solution file-added" onclick="switchSubTab(event, 'macros/src/runtime/expand.rs')" data-id="macros/src/runtime/expand.rs">macros/src/runtime/expand.rs</button>
+<button class="subtab tablinks file-solution file-added" onclick="switchSubTab(event, 'macros/src/runtime/mod.rs')" data-id="macros/src/runtime/mod.rs">macros/src/runtime/mod.rs</button>
+<button class="subtab tablinks file-solution file-added" onclick="switchSubTab(event, 'macros/src/runtime/parse.rs')" data-id="macros/src/runtime/parse.rs">macros/src/runtime/parse.rs</button>
+</div>
+<div id="solution/Cargo.toml" class="subtab tabcontent active" data-id="Cargo.toml">
 
 ```toml
 {{#include ./solution/Cargo.toml}}
 ```
 
-#### **<span class="file-solution file-added">macros/Cargo.toml</span>**
+</div>
+
+<div id="solution/macros/Cargo.toml" class="subtab tabcontent" data-id="macros/Cargo.toml">
 
 ```toml
 {{#include ./solution/macros/Cargo.toml}}
 ```
 
-#### **<span class="file-solution file-added">macros/src/call/expand.rs</span>**
+</div>
+
+<div id="solution/macros/src/call/expand.rs" class="subtab tabcontent" data-id="macros/src/call/expand.rs">
 
 ```rust
 {{#include ./solution/macros/src/call/expand.rs}}
 ```
 
-#### **<span class="file-solution file-added">macros/src/call/mod.rs</span>**
+</div>
+
+<div id="solution/macros/src/call/mod.rs" class="subtab tabcontent" data-id="macros/src/call/mod.rs">
 
 ```rust
 {{#include ./solution/macros/src/call/mod.rs}}
 ```
 
-#### **<span class="file-solution file-added">macros/src/call/parse.rs</span>**
+</div>
+
+<div id="solution/macros/src/call/parse.rs" class="subtab tabcontent" data-id="macros/src/call/parse.rs">
 
 ```rust
 {{#include ./solution/macros/src/call/parse.rs}}
 ```
 
-#### **<span class="file-solution file-modified">macros/src/lib.rs</span>**
+</div>
+
+<div id="solution/macros/src/lib.rs" class="subtab tabcontent" data-id="macros/src/lib.rs">
 
 ```rust
 {{#include ./solution/macros/src/lib.rs}}
 ```
 
-#### **<span class="file-solution file-added">macros/src/runtime/expand.rs</span>**
+</div>
+
+<div id="solution/macros/src/runtime/expand.rs" class="subtab tabcontent" data-id="macros/src/runtime/expand.rs">
 
 ```rust
 {{#include ./solution/macros/src/runtime/expand.rs}}
 ```
 
-#### **<span class="file-solution file-added">macros/src/runtime/mod.rs</span>**
+</div>
+
+<div id="solution/macros/src/runtime/mod.rs" class="subtab tabcontent" data-id="macros/src/runtime/mod.rs">
 
 ```rust
 {{#include ./solution/macros/src/runtime/mod.rs}}
 ```
 
-#### **<span class="file-solution file-added">macros/src/runtime/parse.rs</span>**
+</div>
+
+<div id="solution/macros/src/runtime/parse.rs" class="subtab tabcontent" data-id="macros/src/runtime/parse.rs">
 
 ```rust
 {{#include ./solution/macros/src/runtime/parse.rs}}
 ```
 
+</div>
 
 
-<!-- tabs:end -->
 
-#### **diff**
+</div>
 
-<!-- tabs:start -->
+<div id="Diff" class="maintab tabcontent">
 
-#### **template.diff**
+
+<div class="tab">
+	<button class="subtab tablinks active" onclick="switchSubTab(event, 'template.diff')">template.diff</button>
+	<button class="subtab tablinks" onclick="switchSubTab(event, 'solution.diff')">solution.diff</button>
+</div>
+<div id="template.diff" class="subtab tabcontent active" data-id="template.diff">
 
 ```diff
 {{#include ./template/template.diff}}
 ```
 
-#### **solution.diff**
+</div>
+<div id="solution.diff" class="subtab tabcontent" data-id="solution.diff">
 
 ```diff
 {{#include ./solution/solution.diff}}
 ```
 
+</div>
 
+</div>
 
-<!-- tabs:end -->
-
-<!-- tabs:end -->
+</div>
+</div>

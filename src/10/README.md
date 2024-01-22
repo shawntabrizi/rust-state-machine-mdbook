@@ -1,68 +1,94 @@
 
+<div class="content-row">
+<div class="content-col">
+
 {{#include ./template/README.md}}
 
-<!-- slide:break -->
+</div>
 
-<!-- tabs:start -->
+<div class="content-col">
 
-#### **template**
+<div class="tab">
+  <button class="maintab tablinks active" onclick="switchMainTab(event, 'Template')">Template</button>
+  <button class="maintab tablinks" onclick="switchMainTab(event, 'Solution')">Solution</button>
+  <button class="maintab tablinks" onclick="switchMainTab(event, 'Diff')">Diff</button>
+</div>
 
-<!-- tabs:start -->
+<div id="Template" class="maintab tabcontent active">
 
-#### **<span class="file-template file-modified">src/main.rs</span>**
+<div class="tab">
+<button class="subtab tablinks file-template file-modified active" onclick="switchSubTab(event, 'src/main.rs')" data-id="src/main.rs">src/main.rs</button>
+<button class="subtab tablinks file-template file-added" onclick="switchSubTab(event, 'src/system.rs')" data-id="src/system.rs">src/system.rs</button>
+</div>
+<div id="template/src/main.rs" class="subtab tabcontent active" data-id="src/main.rs">
 
 ```rust
 {{#include ./template/src/main.rs}}
 ```
 
-#### **<span class="file-template file-added">src/system.rs</span>**
+</div>
+
+<div id="template/src/system.rs" class="subtab tabcontent" data-id="src/system.rs">
 
 ```rust
 {{#include ./template/src/system.rs}}
 ```
 
+</div>
 
 
-<!-- tabs:end -->
 
-#### **solution**
+</div>
 
-<!-- tabs:start -->
+<div id="Solution" class="maintab tabcontent">
 
-#### **<span class="file-solution file-modified">src/main.rs</span>**
+<div class="tab">
+<button class="subtab tablinks file-solution file-modified active" onclick="switchSubTab(event, 'src/main.rs')" data-id="src/main.rs">src/main.rs</button>
+<button class="subtab tablinks file-solution file-modified" onclick="switchSubTab(event, 'src/system.rs')" data-id="src/system.rs">src/system.rs</button>
+</div>
+<div id="solution/src/main.rs" class="subtab tabcontent active" data-id="src/main.rs">
 
 ```rust
 {{#include ./solution/src/main.rs}}
 ```
 
-#### **<span class="file-solution file-modified">src/system.rs</span>**
+</div>
+
+<div id="solution/src/system.rs" class="subtab tabcontent" data-id="src/system.rs">
 
 ```rust
 {{#include ./solution/src/system.rs}}
 ```
 
+</div>
 
 
-<!-- tabs:end -->
 
-#### **diff**
+</div>
 
-<!-- tabs:start -->
+<div id="Diff" class="maintab tabcontent">
 
-#### **template.diff**
+
+<div class="tab">
+	<button class="subtab tablinks active" onclick="switchSubTab(event, 'template.diff')">template.diff</button>
+	<button class="subtab tablinks" onclick="switchSubTab(event, 'solution.diff')">solution.diff</button>
+</div>
+<div id="template.diff" class="subtab tabcontent active" data-id="template.diff">
 
 ```diff
 {{#include ./template/template.diff}}
 ```
 
-#### **solution.diff**
+</div>
+<div id="solution.diff" class="subtab tabcontent" data-id="solution.diff">
 
 ```diff
 {{#include ./solution/solution.diff}}
 ```
 
+</div>
 
+</div>
 
-<!-- tabs:end -->
-
-<!-- tabs:end -->
+</div>
+</div>

@@ -1,36 +1,49 @@
 
+<div class="content-row">
+<div class="content-col">
+
 {{#include ./source/README.md}}
 
-<!-- slide:break -->
+</div>
+<div class="content-col">
 
-<!-- tabs:start -->
+<div class="tab">
+  <button class="maintab tablinks active" onclick="switchMainTab(event, 'Source')">Source</button>
+  <button class="maintab tablinks" onclick="switchMainTab(event, 'Diff')">Diff</button>
+</div>
 
-#### **source**
+<div id="Source" class="maintab tabcontent active">
 
-<!-- tabs:start -->
-
-#### **<span class="file-source file-modified">Cargo.toml</span>**
+<div class="tab">
+<button class="subtab tablinks file-source file-modified active" onclick="switchSubTab(event, 'Cargo.toml')" data-id="Cargo.toml">Cargo.toml</button>
+</div>
+<div id="source/Cargo.toml" class="subtab tabcontent active" data-id="Cargo.toml">
 
 ```toml
 {{#include ./source/Cargo.toml}}
 ```
 
+</div>
 
 
-<!-- tabs:end -->
 
-#### **diff**
+</div>
 
-<!-- tabs:start -->
+<div id="Diff" class="maintab tabcontent">
 
-#### **changes.diff**
+
+<div class="tab">
+	<button class="subtab tablinks active" onclick="switchSubTab(event, 'changes.diff')">changes.diff</button>
+</div>
+<div id="changes.diff" class="subtab tabcontent active" data-id="changes.diff">
 
 ```diff
 {{#include ./source/changes.diff}}
 ```
 
+</div>
 
+</div>
 
-<!-- tabs:end -->
-
-<!-- tabs:end -->
+</div>
+</div>
